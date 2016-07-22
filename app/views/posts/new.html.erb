@@ -1,0 +1,13 @@
+<% unless @post.errors.blank? %>
+  <div class='errors'>
+    <% @post.errors.each do |key, value| %>
+      <div class='error-message'><%= key %> <%= value %></div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= form_for @post, method: :post do |t| %>
+  <%= t.text_field :title  %>
+  <%= t.text_field :content  %>
+  <%= t.submit %>
+<% end %>
