@@ -1,0 +1,13 @@
+<%= form_for @post, method: :put, html: { class: 'create-new-post' } do |t| %>
+  <div class='input-group'>
+    <label> title </label>
+    <%= t.text_field :title, class: 'form-control'  %>
+  </div>
+  <div class='input-group'>
+    <label> content </label>
+    <%= t.text_field :content, class: 'form-control'  %>
+  </div>
+  <div class='input-group'>
+    <%= t.submit %>
+  </div>
+<% end %>

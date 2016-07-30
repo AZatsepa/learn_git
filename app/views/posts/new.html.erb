@@ -6,8 +6,29 @@
   </div>
 <% end %>
 
-<%= form_for @post, method: :post do |t| %>
-  <%= t.text_field :title  %>
-  <%= t.text_field :content  %>
-  <%= t.submit %>
+<%= form_for @post, method: :post, html: { class: 'create-new-post' } do |t| %>
+  <div class='input-group'>
+    <label> title </label>
+    <%= t.text_field :title, class: 'form-control'  %>
+  </div>
+  <div class='input-group'>
+    <label> content </label>
+    <%= t.text_field :content, class: 'form-control'  %>
+  </div>
+  <div class='input-group'>
+    <%= t.submit %>
+  </div>
 <% end %>
+
+<div class='posts-list'>
+  <% @posts.each do |post| %>
+    <div class='post'>
+      <div class='title' >
+        <%= post.title %>
+        <label> <%= link_to 'edit', edit_post_path(post.id) %> </label>
+        <label class='created-at'> <%= post.created_at.strftime('%d-%m-%y') %> </label>
+      </div>
+      <div class='content-description'> <%= post.content %> </div>
+    </div>
+  <% end %>
+</div>
