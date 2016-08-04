@@ -1,0 +1,12 @@
+<div class='post'>
+  <div class='title' >
+    <%= post.title %>
+    <% if current_user.id == post.user_id %>
+      <label> <%= link_to 'edit', edit_post_path(post.id) %> </label>
+      <label> <%= link_to 'view comments', post_comments_path(post.id) %> </label>
+      <label> <%= link_to 'delete', post_path(post.id), method: :delete %> </label>
+      <label class='created-at'> <%= post.created_at.strftime('%d-%m-%y') %> </label>
+    <% end %>
+  </div>
+  <div class='content-description'> <%= post.content %> </div>
+</div>

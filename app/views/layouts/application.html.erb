@@ -26,6 +26,7 @@
           <li><%= link_to 'sign in', new_user_session_path %></li>
           <li><%= link_to 'sign up', new_user_registration_path %></li>
         <% else %>
+          <li><%= current_user.posts_count %></li>
           <li><%= link_to 'logout', destroy_user_session_path, method: 'DELETE' %></li>
         <% end %>
       </ul>

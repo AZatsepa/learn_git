@@ -1,34 +1,7 @@
-<% unless @post.errors.blank? %>
-  <div class='errors'>
-    <% @post.errors.each do |key, value| %>
-      <div class='error-message'><%= key %> <%= value %></div>
-    <% end %>
-  </div>
-<% end %>
-
-<%= form_for @post, method: :post, html: { class: 'create-new-post' } do |t| %>
-  <div class='input-group'>
-    <label> title </label>
-    <%= t.text_field :title, class: 'form-control'  %>
-  </div>
-  <div class='input-group'>
-    <label> content </label>
-    <%= t.text_field :content, class: 'form-control'  %>
-  </div>
-  <div class='input-group'>
-    <%= t.submit %>
-  </div>
-<% end %>
+<%= render partial: 'form', locals: { post: @post, method: :post } %>
 
 <div class='posts-list'>
   <% @posts.each do |post| %>
-    <div class='post'>
-      <div class='title' >
-        <%= post.title %>
-        <label> <%= link_to 'edit', edit_post_path(post.id) %> </label>
-        <label class='created-at'> <%= post.created_at.strftime('%d-%m-%y') %> </label>
-      </div>
-      <div class='content-description'> <%= post.content %> </div>
-    </div>
+    <%= render partial: 'post', locals: { post: post } %>
   <% end %>
 </div>

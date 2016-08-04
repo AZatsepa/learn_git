@@ -1,0 +1,15 @@
+<div class='post'>
+  <div class='title' >
+    <%= @post.title %>
+    <label class='created-at'> <%= @post.created_at.strftime('%d-%m-%y') %> </label>
+  </div>
+  <div class='content-description'> <%= @post.content %> </div>
+</div>
+
+<div class='comments-list'>
+  <% @comments.each do |comment| %>
+    <div class='comment'>
+      <%= comment.description %>
+    </div>
+  <% end %>
+</div>

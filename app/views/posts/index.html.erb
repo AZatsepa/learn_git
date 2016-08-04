@@ -1,14 +1,8 @@
 <div class='posts-list'>
   <% @posts.each do |post| %>
-    <div class='post'>
-      <div class='title' >
-        <%= post.title %>
-        <% if current_user.id == post.user_id %>
-          <label> <%= link_to 'edit', edit_post_path(post.id) %> </label>
-        <% end %>
-        <label class='created-at'> <%= post.created_at.strftime('%d-%m-%y') %> </label>
-      </div>
-      <div class='content-description'> <%= post.content %> </div>
-    </div>
+    <%= render partial: 'post', locals: { post: post } %>
+    <% post.comments.each do |comment| %>
+      <%=  %>
+    <% end %>
   <% end %>
 </div>

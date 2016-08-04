@@ -1,0 +1,24 @@
+<div class='create-new-post'>
+  <% unless post.errors.blank? %>
+    <div> Some shit was happen </div>
+    <ul class='errors'>
+      <% post.errors.each do |key, value| %>
+        <li class='error-message'><%= key %> <%= value %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_for post, method: method do |t| %>
+    <div class='input-group'>
+      <label> title </label>
+      <%= t.text_field :title, class: 'form-control'  %>
+    </div>
+    <div class='input-group'>
+      <label> content </label>
+      <%= t.text_field :content, class: 'form-control'  %>
+    </div>
+    <div class='input-group'>
+      <%= t.submit %>
+    </div>
+  <% end %>
+</div>
