@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   devise_for :users
+  resources  :users
 
   resources :posts do
     resources :comments, only: [:index, :create, :destroy]
